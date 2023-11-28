@@ -10,16 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameServer {
-    private static final int PORT = 5858;
+    private static final int PORT = 8000;
     private static Map<String, PrintWriter> clients = new HashMap<>();
+
+    private static char[] symbol = {'X', 'O'};
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Server is running and waiting for players...");
+            System.out.println("Server is running and waiting for clients...");
 
             while (clients.size() < 2) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("New player connected: " + clientSocket);
+                System.out.println("New client connected: " + clientSocket);
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -31,10 +33,13 @@ public class GameServer {
                 // Store the client's name and PrintWriter in the map
                 clients.put(clientName, out);
 
-                System.out.println("Player " + clientName + " has joined.");
+                // Assign client symbol to play the game
+                char clientSymbol = symbol[clients.size() - 1];
+
+                System.out.println("Client " + clientName + " has joined.");
 
                 // Start a new thread to handle client messages
-                new Thread(new ClientHandler(clientName, in)).start();
+                new Thread(new ClientHandler(clientName, in, clientSymbol)).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,4 +61,5 @@ public class GameServer {
     public static void removeClient(String clientName) {
         clients.remove(clientName);
     }
+
 }

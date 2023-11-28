@@ -7,9 +7,12 @@ public class ClientHandler implements Runnable {
     private String clientName;
     private BufferedReader in;
 
-    public ClientHandler(String clientName, BufferedReader in) {
+    private char clientSymbol;
+
+    public ClientHandler(String clientName, BufferedReader in, char clientSymbol) {
         this.clientName = clientName;
         this.in = in;
+        this.clientSymbol = clientSymbol;
     }
 
     @Override
@@ -27,4 +30,5 @@ public class ClientHandler implements Runnable {
             GameServer.removeClient(clientName);
         }
     }
+
 }

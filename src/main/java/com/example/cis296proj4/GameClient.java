@@ -8,9 +8,10 @@ import java.net.Socket;
 
 public class GameClient {
     private static final String SERVER_IP = "localhost";
-    private static final int SERVER_PORT = 5858;
+    private static final int SERVER_PORT = 8000;
 
-    public static void main(String[] args) {
+    public void start() {
+
         try (Socket socket = new Socket(SERVER_IP, SERVER_PORT);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -35,4 +36,6 @@ public class GameClient {
             e.printStackTrace();
         }
     }
+
 }
+
