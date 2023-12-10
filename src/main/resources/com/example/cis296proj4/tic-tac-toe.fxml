@@ -26,11 +26,6 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </opaqueInsets>
         </GridPane>
-        <Button fx:id="logoutBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="81.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="71.0" style="-fx-background-color: #fffaf1;" text="Log out" textAlignment="CENTER" textFill="#3f6150">
-            <font>
-                <Font name="Apple Braille" size="13.0" />
-            </font>
-        </Button>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="14.0" prefHeight="50.0" prefWidth="275.0" text="Tic Tac Toe Game" textAlignment="CENTER" textFill="#3f6150">
             <font>
                 <Font name="Arial Rounded MT Bold" size="25.0" />
@@ -44,5 +39,6 @@
                 <Font name="DIN Alternate Bold" size="13.0" />
             </font>
         </Label>
+      <Label layoutX="20.0" layoutY="81.0" prefHeight="26.0" prefWidth="114.0" text="Player X starts first" />
     </children>
 </AnchorPane>
